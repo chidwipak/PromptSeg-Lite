@@ -1,0 +1,73 @@
+# PromptSeg-Lite V2: Optimized for mIoU push toward 0.85
+# Phase 2 upgrades: ASPP, Focal Tversky + Boundary + OHEM, Deep Supervision, 512x512
+
+seed: 42
+
+data:
+  image_size: 512
+  batch_size: 16          # 512x512 with ASPP — still fits L4 24GB easily
+  num_workers: 4
+  data_root: "data"
+  
+model:
+  text_encoder:
+    vocab_size: 128       # Character-level vocab (ASCII range)
+    embed_dim: 64
+    hidden_size: 128
+    num_layers: 1
+    bidirectional: true
+  
+  vision_encoder:
+    channels: [32, 64, 128, 256, 512]
+    se_reduction: 4
+  
+  decoder:
+    channels: [256, 128, 64, 32]
+
+  use_aspp: true
+  aspp_mid_ch: 128
+  deep_supervision: true
+
+training:
+  epochs: 200
+  optimizer: adam
+  learning_rate: 5.0e-4     # Slightly lower for 512x512 stability
+  weight_decay: 1.0e-4
+  scheduler: cosine_annealing
+  warmup_epochs: 10          # Longer warmup for new architecture
+  min_lr: 1.0e-6
+  grad_clip: 5.0
+  
+  loss:
+    type: compound_v2        # New Phase 2 loss
+    ft_weight: 1.0           # Focal Tversky weight
+    boundary_weight: 0.5     # Boundary loss weight
+    ohem_weight: 0.5         # OHEM loss weight
+    ft_alpha: 0.7            # FN penalty (higher = more FN penalty)
+    ft_beta: 0.3             # FP penalty
+    ft_gamma: 0.75           # Focal exponent
+    ohem_ratio: 0.25         # Top 25% hardest pixels
+    # Deep supervision aux weights
+    aux_weights: [0.4, 0.2]
+  
+  early_stopping:
+    patience: 35             # More patience for harder optimization
+    metric: val_dice
+    mode: max
+
+  amp: true               # Automatic Mixed Precision for L4 GPU
+
+augmentation:
+  horizontal_flip: 0.5
+  vertical_flip: 0.3
+  rotation_degrees: 15
+  color_jitter:
+    brightness: 0.4
+    contrast: 0.4
+    saturation: 0.3
+    hue: 0.1
+  gaussian_blur_prob: 0.3
+  gaussian_noise_prob: 0.2
+
+checkpoint_dir: "checkpoints"
+log_dir: "runs"

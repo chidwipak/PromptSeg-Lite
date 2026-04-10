@@ -1,0 +1,849 @@
+[
+  {
+    "layer_name": "text_encoder.embedding",
+    "type": "Embedding",
+    "parameters": 8192,
+    "input_shape": "[1, 21]",
+    "output_shape": "[1, 21, 64]"
+  },
+  {
+    "layer_name": "text_encoder.lstm",
+    "type": "LSTM",
+    "parameters": 198656,
+    "input_shape": "[1, 21, 64]",
+    "output_shape": "[1, 21, 256]",
+    "input_size": 64,
+    "hidden_size": 128,
+    "num_layers": 1,
+    "bidirectional": true
+  },
+  {
+    "layer_name": "text_encoder.fc",
+    "type": "Linear",
+    "parameters": 65792,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 256]",
+    "in_features": 256,
+    "out_features": 256
+  },
+  {
+    "layer_name": "text_encoder.film_generators.0.gamma_fc",
+    "type": "Linear",
+    "parameters": 16448,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 64]",
+    "in_features": 256,
+    "out_features": 64
+  },
+  {
+    "layer_name": "text_encoder.film_generators.0.beta_fc",
+    "type": "Linear",
+    "parameters": 16448,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 64]",
+    "in_features": 256,
+    "out_features": 64
+  },
+  {
+    "layer_name": "text_encoder.film_generators.1.gamma_fc",
+    "type": "Linear",
+    "parameters": 32896,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 128]",
+    "in_features": 256,
+    "out_features": 128
+  },
+  {
+    "layer_name": "text_encoder.film_generators.1.beta_fc",
+    "type": "Linear",
+    "parameters": 32896,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 128]",
+    "in_features": 256,
+    "out_features": 128
+  },
+  {
+    "layer_name": "text_encoder.film_generators.2.gamma_fc",
+    "type": "Linear",
+    "parameters": 65792,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 256]",
+    "in_features": 256,
+    "out_features": 256
+  },
+  {
+    "layer_name": "text_encoder.film_generators.2.beta_fc",
+    "type": "Linear",
+    "parameters": 65792,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 256]",
+    "in_features": 256,
+    "out_features": 256
+  },
+  {
+    "layer_name": "text_encoder.film_generators.3.gamma_fc",
+    "type": "Linear",
+    "parameters": 131584,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 512]",
+    "in_features": 256,
+    "out_features": 512
+  },
+  {
+    "layer_name": "text_encoder.film_generators.3.beta_fc",
+    "type": "Linear",
+    "parameters": 131584,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 512]",
+    "in_features": 256,
+    "out_features": 512
+  },
+  {
+    "layer_name": "text_encoder.film_generators.4.gamma_fc",
+    "type": "Linear",
+    "parameters": 65792,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 256]",
+    "in_features": 256,
+    "out_features": 256
+  },
+  {
+    "layer_name": "text_encoder.film_generators.4.beta_fc",
+    "type": "Linear",
+    "parameters": 65792,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 256]",
+    "in_features": 256,
+    "out_features": 256
+  },
+  {
+    "layer_name": "text_encoder.film_generators.5.gamma_fc",
+    "type": "Linear",
+    "parameters": 32896,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 128]",
+    "in_features": 256,
+    "out_features": 128
+  },
+  {
+    "layer_name": "text_encoder.film_generators.5.beta_fc",
+    "type": "Linear",
+    "parameters": 32896,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 128]",
+    "in_features": 256,
+    "out_features": 128
+  },
+  {
+    "layer_name": "text_encoder.film_generators.6.gamma_fc",
+    "type": "Linear",
+    "parameters": 16448,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 64]",
+    "in_features": 256,
+    "out_features": 64
+  },
+  {
+    "layer_name": "text_encoder.film_generators.6.beta_fc",
+    "type": "Linear",
+    "parameters": 16448,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 64]",
+    "in_features": 256,
+    "out_features": 64
+  },
+  {
+    "layer_name": "vision_encoder.stem.0",
+    "type": "Conv2d",
+    "parameters": 864,
+    "input_shape": "[1, 3, 256, 256]",
+    "output_shape": "[1, 32, 128, 128]",
+    "kernel_size": "(3, 3)",
+    "stride": "(2, 2)",
+    "padding": "(1, 1)",
+    "groups": 1,
+    "in_channels": 3,
+    "out_channels": 32
+  },
+  {
+    "layer_name": "vision_encoder.stem.1",
+    "type": "BatchNorm2d",
+    "parameters": 64,
+    "input_shape": "[1, 32, 128, 128]",
+    "output_shape": "[1, 32, 128, 128]",
+    "num_features": 32
+  },
+  {
+    "layer_name": "vision_encoder.stage1.convs.0.dw",
+    "type": "Conv2d",
+    "parameters": 288,
+    "input_shape": "[1, 32, 128, 128]",
+    "output_shape": "[1, 32, 64, 64]",
+    "kernel_size": "(3, 3)",
+    "stride": "(2, 2)",
+    "padding": "(1, 1)",
+    "groups": 32,
+    "in_channels": 32,
+    "out_channels": 32
+  },
+  {
+    "layer_name": "vision_encoder.stage1.convs.0.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 64,
+    "input_shape": "[1, 32, 64, 64]",
+    "output_shape": "[1, 32, 64, 64]",
+    "num_features": 32
+  },
+  {
+    "layer_name": "vision_encoder.stage1.convs.0.pw",
+    "type": "Conv2d",
+    "parameters": 2048,
+    "input_shape": "[1, 32, 64, 64]",
+    "output_shape": "[1, 64, 64, 64]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 32,
+    "out_channels": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage1.convs.0.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 128,
+    "input_shape": "[1, 64, 64, 64]",
+    "output_shape": "[1, 64, 64, 64]",
+    "num_features": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage1.convs.1.dw",
+    "type": "Conv2d",
+    "parameters": 576,
+    "input_shape": "[1, 64, 64, 64]",
+    "output_shape": "[1, 64, 64, 64]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 64,
+    "in_channels": 64,
+    "out_channels": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage1.convs.1.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 128,
+    "input_shape": "[1, 64, 64, 64]",
+    "output_shape": "[1, 64, 64, 64]",
+    "num_features": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage1.convs.1.pw",
+    "type": "Conv2d",
+    "parameters": 4096,
+    "input_shape": "[1, 64, 64, 64]",
+    "output_shape": "[1, 64, 64, 64]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 64,
+    "out_channels": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage1.convs.1.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 128,
+    "input_shape": "[1, 64, 64, 64]",
+    "output_shape": "[1, 64, 64, 64]",
+    "num_features": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage1.se.fc1",
+    "type": "Linear",
+    "parameters": 1040,
+    "input_shape": "[1, 64]",
+    "output_shape": "[1, 16]",
+    "in_features": 64,
+    "out_features": 16
+  },
+  {
+    "layer_name": "vision_encoder.stage1.se.fc2",
+    "type": "Linear",
+    "parameters": 1088,
+    "input_shape": "[1, 16]",
+    "output_shape": "[1, 64]",
+    "in_features": 16,
+    "out_features": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.0.dw",
+    "type": "Conv2d",
+    "parameters": 576,
+    "input_shape": "[1, 64, 64, 64]",
+    "output_shape": "[1, 64, 32, 32]",
+    "kernel_size": "(3, 3)",
+    "stride": "(2, 2)",
+    "padding": "(1, 1)",
+    "groups": 64,
+    "in_channels": 64,
+    "out_channels": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.0.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 128,
+    "input_shape": "[1, 64, 32, 32]",
+    "output_shape": "[1, 64, 32, 32]",
+    "num_features": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.0.pw",
+    "type": "Conv2d",
+    "parameters": 8192,
+    "input_shape": "[1, 64, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 64,
+    "out_channels": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.0.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 256,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "num_features": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.1.dw",
+    "type": "Conv2d",
+    "parameters": 1152,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 128,
+    "in_channels": 128,
+    "out_channels": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.1.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 256,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "num_features": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.1.pw",
+    "type": "Conv2d",
+    "parameters": 16384,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 128,
+    "out_channels": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.1.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 256,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "num_features": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.2.dw",
+    "type": "Conv2d",
+    "parameters": 1152,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 128,
+    "in_channels": 128,
+    "out_channels": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.2.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 256,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "num_features": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.2.pw",
+    "type": "Conv2d",
+    "parameters": 16384,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 128,
+    "out_channels": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.convs.2.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 256,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "num_features": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage2.se.fc1",
+    "type": "Linear",
+    "parameters": 4128,
+    "input_shape": "[1, 128]",
+    "output_shape": "[1, 32]",
+    "in_features": 128,
+    "out_features": 32
+  },
+  {
+    "layer_name": "vision_encoder.stage2.se.fc2",
+    "type": "Linear",
+    "parameters": 4224,
+    "input_shape": "[1, 32]",
+    "output_shape": "[1, 128]",
+    "in_features": 32,
+    "out_features": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.0.dw",
+    "type": "Conv2d",
+    "parameters": 1152,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 16, 16]",
+    "kernel_size": "(3, 3)",
+    "stride": "(2, 2)",
+    "padding": "(1, 1)",
+    "groups": 128,
+    "in_channels": 128,
+    "out_channels": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.0.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 256,
+    "input_shape": "[1, 128, 16, 16]",
+    "output_shape": "[1, 128, 16, 16]",
+    "num_features": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.0.pw",
+    "type": "Conv2d",
+    "parameters": 32768,
+    "input_shape": "[1, 128, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 128,
+    "out_channels": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.0.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 512,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "num_features": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.1.dw",
+    "type": "Conv2d",
+    "parameters": 2304,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 256,
+    "in_channels": 256,
+    "out_channels": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.1.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 512,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "num_features": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.1.pw",
+    "type": "Conv2d",
+    "parameters": 65536,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 256,
+    "out_channels": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.1.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 512,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "num_features": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.2.dw",
+    "type": "Conv2d",
+    "parameters": 2304,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 256,
+    "in_channels": 256,
+    "out_channels": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.2.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 512,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "num_features": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.2.pw",
+    "type": "Conv2d",
+    "parameters": 65536,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 256,
+    "out_channels": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.convs.2.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 512,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "num_features": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage3.se.fc1",
+    "type": "Linear",
+    "parameters": 16448,
+    "input_shape": "[1, 256]",
+    "output_shape": "[1, 64]",
+    "in_features": 256,
+    "out_features": 64
+  },
+  {
+    "layer_name": "vision_encoder.stage3.se.fc2",
+    "type": "Linear",
+    "parameters": 16640,
+    "input_shape": "[1, 64]",
+    "output_shape": "[1, 256]",
+    "in_features": 64,
+    "out_features": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage4.convs.0.dw",
+    "type": "Conv2d",
+    "parameters": 2304,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 8, 8]",
+    "kernel_size": "(3, 3)",
+    "stride": "(2, 2)",
+    "padding": "(1, 1)",
+    "groups": 256,
+    "in_channels": 256,
+    "out_channels": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage4.convs.0.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 512,
+    "input_shape": "[1, 256, 8, 8]",
+    "output_shape": "[1, 256, 8, 8]",
+    "num_features": 256
+  },
+  {
+    "layer_name": "vision_encoder.stage4.convs.0.pw",
+    "type": "Conv2d",
+    "parameters": 131072,
+    "input_shape": "[1, 256, 8, 8]",
+    "output_shape": "[1, 512, 8, 8]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 256,
+    "out_channels": 512
+  },
+  {
+    "layer_name": "vision_encoder.stage4.convs.0.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 1024,
+    "input_shape": "[1, 512, 8, 8]",
+    "output_shape": "[1, 512, 8, 8]",
+    "num_features": 512
+  },
+  {
+    "layer_name": "vision_encoder.stage4.convs.1.dw",
+    "type": "Conv2d",
+    "parameters": 4608,
+    "input_shape": "[1, 512, 8, 8]",
+    "output_shape": "[1, 512, 8, 8]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 512,
+    "in_channels": 512,
+    "out_channels": 512
+  },
+  {
+    "layer_name": "vision_encoder.stage4.convs.1.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 1024,
+    "input_shape": "[1, 512, 8, 8]",
+    "output_shape": "[1, 512, 8, 8]",
+    "num_features": 512
+  },
+  {
+    "layer_name": "vision_encoder.stage4.convs.1.pw",
+    "type": "Conv2d",
+    "parameters": 262144,
+    "input_shape": "[1, 512, 8, 8]",
+    "output_shape": "[1, 512, 8, 8]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 512,
+    "out_channels": 512
+  },
+  {
+    "layer_name": "vision_encoder.stage4.convs.1.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 1024,
+    "input_shape": "[1, 512, 8, 8]",
+    "output_shape": "[1, 512, 8, 8]",
+    "num_features": 512
+  },
+  {
+    "layer_name": "vision_encoder.stage4.se.fc1",
+    "type": "Linear",
+    "parameters": 65664,
+    "input_shape": "[1, 512]",
+    "output_shape": "[1, 128]",
+    "in_features": 512,
+    "out_features": 128
+  },
+  {
+    "layer_name": "vision_encoder.stage4.se.fc2",
+    "type": "Linear",
+    "parameters": 66048,
+    "input_shape": "[1, 128]",
+    "output_shape": "[1, 512]",
+    "in_features": 128,
+    "out_features": 512
+  },
+  {
+    "layer_name": "decoder.dec4.conv.dw",
+    "type": "Conv2d",
+    "parameters": 6912,
+    "input_shape": "[1, 768, 16, 16]",
+    "output_shape": "[1, 768, 16, 16]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 768,
+    "in_channels": 768,
+    "out_channels": 768
+  },
+  {
+    "layer_name": "decoder.dec4.conv.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 1536,
+    "input_shape": "[1, 768, 16, 16]",
+    "output_shape": "[1, 768, 16, 16]",
+    "num_features": 768
+  },
+  {
+    "layer_name": "decoder.dec4.conv.pw",
+    "type": "Conv2d",
+    "parameters": 196608,
+    "input_shape": "[1, 768, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 768,
+    "out_channels": 256
+  },
+  {
+    "layer_name": "decoder.dec4.conv.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 512,
+    "input_shape": "[1, 256, 16, 16]",
+    "output_shape": "[1, 256, 16, 16]",
+    "num_features": 256
+  },
+  {
+    "layer_name": "decoder.dec3.conv.dw",
+    "type": "Conv2d",
+    "parameters": 3456,
+    "input_shape": "[1, 384, 32, 32]",
+    "output_shape": "[1, 384, 32, 32]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 384,
+    "in_channels": 384,
+    "out_channels": 384
+  },
+  {
+    "layer_name": "decoder.dec3.conv.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 768,
+    "input_shape": "[1, 384, 32, 32]",
+    "output_shape": "[1, 384, 32, 32]",
+    "num_features": 384
+  },
+  {
+    "layer_name": "decoder.dec3.conv.pw",
+    "type": "Conv2d",
+    "parameters": 49152,
+    "input_shape": "[1, 384, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 384,
+    "out_channels": 128
+  },
+  {
+    "layer_name": "decoder.dec3.conv.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 256,
+    "input_shape": "[1, 128, 32, 32]",
+    "output_shape": "[1, 128, 32, 32]",
+    "num_features": 128
+  },
+  {
+    "layer_name": "decoder.dec2.conv.dw",
+    "type": "Conv2d",
+    "parameters": 1728,
+    "input_shape": "[1, 192, 64, 64]",
+    "output_shape": "[1, 192, 64, 64]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 192,
+    "in_channels": 192,
+    "out_channels": 192
+  },
+  {
+    "layer_name": "decoder.dec2.conv.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 384,
+    "input_shape": "[1, 192, 64, 64]",
+    "output_shape": "[1, 192, 64, 64]",
+    "num_features": 192
+  },
+  {
+    "layer_name": "decoder.dec2.conv.pw",
+    "type": "Conv2d",
+    "parameters": 12288,
+    "input_shape": "[1, 192, 64, 64]",
+    "output_shape": "[1, 64, 64, 64]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 192,
+    "out_channels": 64
+  },
+  {
+    "layer_name": "decoder.dec2.conv.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 128,
+    "input_shape": "[1, 64, 64, 64]",
+    "output_shape": "[1, 64, 64, 64]",
+    "num_features": 64
+  },
+  {
+    "layer_name": "decoder.dec1.1.dw",
+    "type": "Conv2d",
+    "parameters": 576,
+    "input_shape": "[1, 64, 128, 128]",
+    "output_shape": "[1, 64, 128, 128]",
+    "kernel_size": "(3, 3)",
+    "stride": "(1, 1)",
+    "padding": "(1, 1)",
+    "groups": 64,
+    "in_channels": 64,
+    "out_channels": 64
+  },
+  {
+    "layer_name": "decoder.dec1.1.bn1",
+    "type": "BatchNorm2d",
+    "parameters": 128,
+    "input_shape": "[1, 64, 128, 128]",
+    "output_shape": "[1, 64, 128, 128]",
+    "num_features": 64
+  },
+  {
+    "layer_name": "decoder.dec1.1.pw",
+    "type": "Conv2d",
+    "parameters": 2048,
+    "input_shape": "[1, 64, 128, 128]",
+    "output_shape": "[1, 32, 128, 128]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 64,
+    "out_channels": 32
+  },
+  {
+    "layer_name": "decoder.dec1.1.bn2",
+    "type": "BatchNorm2d",
+    "parameters": 64,
+    "input_shape": "[1, 32, 128, 128]",
+    "output_shape": "[1, 32, 128, 128]",
+    "num_features": 32
+  },
+  {
+    "layer_name": "decoder.head.1",
+    "type": "Conv2d",
+    "parameters": 33,
+    "input_shape": "[1, 32, 256, 256]",
+    "output_shape": "[1, 1, 256, 256]",
+    "kernel_size": "(1, 1)",
+    "stride": "(1, 1)",
+    "padding": "(0, 0)",
+    "groups": 1,
+    "in_channels": 32,
+    "out_channels": 1
+  }
+]

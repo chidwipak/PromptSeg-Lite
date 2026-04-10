@@ -1,0 +1,56 @@
+{
+  "receptive_field": 63,
+  "rf_coverage_pct": 24.6,
+  "rf_layers": [
+    {
+      "name": "stem",
+      "kernel": 3,
+      "stride": 2,
+      "rf_after": 3,
+      "cumulative_stride": 2
+    },
+    {
+      "name": "stage1_dw",
+      "kernel": 3,
+      "stride": 2,
+      "rf_after": 7,
+      "cumulative_stride": 4
+    },
+    {
+      "name": "stage2_dw",
+      "kernel": 3,
+      "stride": 2,
+      "rf_after": 15,
+      "cumulative_stride": 8
+    },
+    {
+      "name": "stage3_dw",
+      "kernel": 3,
+      "stride": 2,
+      "rf_after": 31,
+      "cumulative_stride": 16
+    },
+    {
+      "name": "stage4_dw",
+      "kernel": 3,
+      "stride": 2,
+      "rf_after": 63,
+      "cumulative_stride": 32
+    }
+  ],
+  "flops_millions": 366.2,
+  "total_params": 2077969,
+  "param_breakdown": {
+    "text_encoder": 996352,
+    "vision_encoder.stem": 928,
+    "vision_encoder.stages": 804112,
+    "decoder": 276577,
+    "other": 0
+  },
+  "model_size_fp32_mb": 8.3,
+  "model_size_fp16_mb": 4.2,
+  "latency_fp32_ms": 5.69,
+  "latency_amp_ms": 8.73,
+  "fps_fp32": 176,
+  "fps_amp": 114
+}
