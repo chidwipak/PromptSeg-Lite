@@ -13,9 +13,11 @@ env/
 # Datasets (download manually from Roboflow)
 data/
 
-# Model checkpoints (too large for git)
-checkpoints/
-checkpoints_v1/
+# Intermediate checkpoints (only best models tracked)
+checkpoints/epoch_*.pt
+checkpoints/latest.pt
+checkpoints_v1/epoch_*.pt
+checkpoints_v1/latest.pt
 
 # Training logs & runs
 runs/
