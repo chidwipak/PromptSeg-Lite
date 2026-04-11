@@ -11,7 +11,7 @@ venv/
 env/
 
 # Datasets (download manually from Roboflow)
-data/
+/data/
 
 # Intermediate checkpoints (only best models tracked)
 checkpoints/epoch_*.pt
